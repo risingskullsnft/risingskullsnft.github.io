@@ -1,0 +1,14 @@
+{
+    "typeAcquisition": {
+      "include": [
+        "@types/three"
+      ]
+    },
+    "compilerOptions": {
+      "target": "ES6",
+      "module": "es6"
+    },
+    "exclude": [
+      "node_modules"
+    ]
+  }
