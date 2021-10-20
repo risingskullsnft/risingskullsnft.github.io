@@ -1,11 +1,21 @@
 <template>
   <div class="flex flex-col h-screen justify-between">
     <div class="from-blood to-black bg-gradient-to-br w-full h-screen block">
-      <Card class="absolute h-10 z-10" />
-      <div class="h-80 py-6 font-pirata text-8xl text-white text-center">
+      <Card class="container absolute z-10" />
+      <div
+        class="
+          h-20
+          py-1
+          mt-8
+          font-pirata
+          text-6xl
+          lg:text-8xl
+          text-white text-center
+        "
+      >
         {{ name }}
       </div>
-      <div class="mx-auto h-80"></div>
+      <div class="h-2/3 md:h-2/3"></div>
 
       <!-- <router-link to="about">About</router-link> -->
       <SocialBar
@@ -22,7 +32,7 @@
           text-white
         "
       />
-      <HeroCarousel class="sticky bottom-0" />
+      <HeroCarousel class="sticky bottom-0 mx-auto" />
     </div>
   </div>
 </template>

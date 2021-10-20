@@ -4,19 +4,29 @@
       <div
         class="
           h-auto
-          py-10
-          px-10
-          bg-opacity-75 bg-white
-          w-2/3
-          flex flex-col
+          py-4
+          px-4
+          lg:py-10 lg:px-10 lg:w2/3
+          w-11/12
           mx-auto
+          bg-opacity-75 bg-white
+          flex flex-col
           rounded-2xl
           shadow-xl
           hover:rotate-1
           transition-transform
         "
       >
-        <h2 class="font-lato tracking-wide md:text-2xl text-black">
+        <h2
+          class="
+            font-lato
+            tracking-wide
+            text-base
+            sm:text-base
+            md:text-2xl
+            text-black
+          "
+        >
           The
           <strong class="text-blood font-pirata">Rising Skulls</strong> NFT,
           simply unable to rest easy, they're back from the dead, roaming the
@@ -40,7 +50,7 @@
             <li>
               <strong>
                 <fa-icon :icon="['fas', 'flask']" class="text-blood" />
-                Resurrection Mechanic</strong
+                Resurrection Mechanics</strong
               >
             </li>
             <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;…and much more to come!</li>
@@ -63,14 +73,6 @@
             /></a>
           </p>
         </h2>
-        <!-- <div class="flex flex-col">
-          <backquotes class="font-normal text-white text-sm tracking-wider"
-            >Marie Chivers
-          </backquotes>
-          <backqoutes class="font-normal text-white text-sm tracking-wider"
-            >CEO Workcation</backqoutes
-          >
-        </div> -->
       </div>
     </div>
   </div>
@@ -79,5 +81,10 @@
 <script>
 export default {
   name: "Card",
+  data() {
+    return {
+      content: "Rising Skulls",
+    };
+  },
 };
 </script>
