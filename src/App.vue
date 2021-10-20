@@ -1,26 +1,21 @@
 <template>
   <div id="app">
-    <header>
-      
-    </header>
+    <header></header>
     <div>
       <!-- Dynamic routes are displayed here -->
-      <router-view /> 
+      <router-view />
     </div>
-    <footer>
-      
-    </footer>
+    <footer></footer>
   </div>
 </template>
 
 <script>
-
 export default {
+  name: "App",
   // On component init.
-  mounted () {
+  mounted() {
     // Init Web3 via a Vuex datastore.
-    this.$store.dispatch('web3/init');
+    this.$store.dispatch("web3/init");
   },
 };
-
 </script>
