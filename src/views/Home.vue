@@ -28,9 +28,9 @@
 </template>
 
 <script>
-import HeroCarousel from "../components/HeroCarousel";
-import Card from "../components/Card";
-import SocialBar from "../components/SocialBar";
+import HeroCarousel from "@/components/HeroCarousel.vue";
+import Card from "@/components/Card.vue";
+import SocialBar from "@/components/SocialBar.vue";
 
 export default {
   components: {
