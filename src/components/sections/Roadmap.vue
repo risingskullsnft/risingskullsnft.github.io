@@ -68,10 +68,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-h2 {
-  font-style: "Pirata One" !important;
-  font-size: 10em;
-}
-</style>
