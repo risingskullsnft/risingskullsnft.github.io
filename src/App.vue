@@ -53,7 +53,7 @@
         <v-col md="3" xs="12" mx4 class="text-right">
           <v-btn
             v-if="web3Modal.active"
-            :disabled="rewardsBalance == 0"
+            :disabled="rewardsBalance === 0"
             large
             elevation="2"
             color="red darken-1"
