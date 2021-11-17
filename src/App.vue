@@ -37,7 +37,7 @@
           </v-btn>
           <v-btn
             v-for="icon in icons"
-            :key="icon"
+            :key="icon.icon"
             :href="icon.href"
             target="_blank"
             class="mx-1"
