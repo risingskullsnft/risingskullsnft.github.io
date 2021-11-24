@@ -13,18 +13,7 @@
 
       <v-row no-gutters align="center">
         <v-spacer></v-spacer>
-        <v-col
-          v-if="web3Modal.active"
-          cols="9"
-          class="hidden-sm-and-down font-weight-bold"
-          align="end"
-        >
-          <!-- <span class="hidden-sm-and-down mx-2"
-            >Balance: {{ rumBalance }} $RUM</span
-          >
-          <span class="hidden-sm-and-down mx-2"
-            >Claimable: {{ rewardsBalance }} $RUM
-          </span> -->
+        <v-col cols="9" class="hidden-sm-and-down font-weight-bold" align="end">
           <v-btn
             class="mx-1"
             href="https://opensea.io/collection/rising-skulls"
@@ -51,15 +40,44 @@
         </v-col>
 
         <v-col md="3" xs="12" mx4 class="text-right">
-          <v-btn
-            v-if="web3Modal.active"
-            :disabled="rewardsBalance === 0"
-            large
-            elevation="2"
-            color="red darken-1"
-            @click="claimRewards"
-            >Claim RUM</v-btn
-          >
+          <v-menu v-if="web3Modal.active" dark bottom right nudge-left offset-y>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                v-if="web3Modal.active"
+                :disabled="rewardsBalance === 0"
+                large
+                color="transparent"
+                elevation="0"
+                v-bind="attrs"
+                v-on="on"
+                >Claim RUM</v-btn
+              >
+            </template>
+
+            <v-list color="rgb(138, 3, 3)">
+              <v-list-item>
+                <v-list-item-title
+                  >Balance: {{ rumBalance }} RUM</v-list-item-title
+                >
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title
+                  >Claimable: {{ rewardsBalance }} RUM
+                </v-list-item-title>
+              </v-list-item>
+              <v-list-item>
+                <v-btn
+                  block
+                  :disabled="rewardsBalance === 0"
+                  @click="claimRewards"
+                  elevation="0"
+                  color="transparent"
+                >
+                  CLAIM YOUR RUM
+                </v-btn>
+              </v-list-item>
+            </v-list>
+          </v-menu>
           <v-btn
             v-else
             large
@@ -130,11 +148,6 @@ export default {
   data() {
     return {
       theme: "dark",
-      menu: [
-        { icon: "home", title: "Link A" },
-        { icon: "info", title: "Link B" },
-        { icon: "warning", title: "Link C" },
-      ],
       icons: [
         { icon: "mdi-twitter", href: "https://twitter.com/RisingSkullsNFT" },
         { icon: "mdi-discord", href: "https://discord.gg/9P9465WzWp" },
