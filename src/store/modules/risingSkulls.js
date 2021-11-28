@@ -8,7 +8,7 @@ import web3 from "web3";
 const risingSkullsStore = {
   state: {
     rewardsLoading: false,
-    rewardsBalance: 32.5,
+    rewardsBalance: 0,
     rumBalanceLoading: false,
     rumBalance: 0,
     rarityRank: null,
@@ -21,8 +21,9 @@ const risingSkullsStore = {
     },
   },
   getters: {
-    rewardsBalance: (state) => state.rewardsBalance,
-    rumBalance: (state) => state.rumBalance,
+    rewardsBalance: (state) =>
+      Number.parseFloat(state.rewardsBalance).toFixed(2),
+    rumBalance: (state) => Number.parseFloat(state.rumBalance).toFixed(2),
     rarityRank: (state) => state.rarityRank,
     tokenInfo: (state) => state.tokenInfo,
   },
