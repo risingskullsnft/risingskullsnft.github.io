@@ -8,6 +8,6 @@ module.exports = {
     port: 4000,
     public: "0.0.0.0:4000",
   },
-  publicPath: process.env.NODE_ENV === "production" ? "/web3modal-vue/" : "/",
+  publicPath: "/",
   transpileDependencies: ["vuetify", "web3modal-vue"],
 };
