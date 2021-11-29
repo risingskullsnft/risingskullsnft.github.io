@@ -16,7 +16,7 @@
           >
             <v-card
               :color="item.color"
-              :width="$vuetify.breakpoint.xs ? 400 : 900"
+              :width="$vuetify.breakpoint.xs ? 300 : 800"
               dark
             >
               <v-card-title class="text-h6"> {{ item.title }} </v-card-title>
