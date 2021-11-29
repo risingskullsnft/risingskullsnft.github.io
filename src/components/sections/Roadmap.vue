@@ -47,7 +47,7 @@ export default {
         },
         {
           title: "Phase II",
-          text: "<br>✅ $RUM token name chosen by the community<br> ✅ $RUM token max supply 21 million<br>🔃 $RUM token smart-contract completion (90%)<br>🔃 $RUM token smart-contract launch on Polygon<br>🔃 Web3 integration on the website<br>🔃 RUM Token claimable",
+          text: "<br>✅ $RUM token name chosen by the community<br> ✅ $RUM token max supply 21 million<br>✅ $RUM token smart-contract<br>✅ $RUM token smart-contract launch on Polygon<br>✅ Web3 integration on the website<br>✅ RUM Token claimable",
           color: "red darken-4",
           icon: "mdi-skull",
         },
