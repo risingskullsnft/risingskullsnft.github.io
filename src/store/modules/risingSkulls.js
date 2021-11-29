@@ -49,12 +49,10 @@ const risingSkullsStore = {
     },
   },
   actions: {
-    async fetchRumBalance({ commit, rootState }) {
+    async fetchRumBalance({ commit }, account) {
       commit("setRumBalanceLoading", true);
       try {
-        const balance = await getRumTokenContract()["balanceOf"](
-          rootState.web3Modal.account
-        );
+        const balance = await getRumTokenContract()["balanceOf"](account);
         const ethBalance = web3.utils.fromWei(balance.toString(), "ether");
         commit("setRumBalance", ethBalance);
       } catch (err) {
@@ -62,13 +60,13 @@ const risingSkullsStore = {
       }
       commit("setRumBalanceLoading", false);
     },
-    async fetchRewardsAmount({ commit, rootState }) {
+    async fetchRewardsAmount({ commit }, account) {
       commit("setRewardsLoadingState", true);
 
       try {
         // console.log(`Fetching rewards for user: ${web3Modal.account}`);
         const balance = await getRumTokenContract()["getTotalClaimable"](
-          rootState.web3Modal.account
+          account
         );
 
         const ethBalance = web3.utils.fromWei(balance.toString(), "ether");
