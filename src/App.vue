@@ -156,7 +156,9 @@ export default {
         walletconnect: {
           package: WalletConnectProvider,
           options: {
-            infuraId: "-",
+            rpc: {
+              137: "https://polygon-rpc.com",
+            },
           },
         },
       },
@@ -182,8 +184,6 @@ export default {
       this.$store.commit("setWeb3Modal", web3modal);
       if (web3modal.cachedProvider) {
         await this.$store.dispatch("connect");
-        // this.fetchRewards();
-        // this.fetchRumBalance();
       }
     });
   },
