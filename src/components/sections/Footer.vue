@@ -7,15 +7,26 @@
         <v-spacer></v-spacer>
 
         <v-btn
-          v-for="icon in icons"
-          :key="icon"
-          class="mx-4"
+          class="mx-1"
+          href="https://opensea.io/collection/rising-skulls"
+          target="_blank"
           dark
           icon
           align="end"
         >
+          <v-img contain src="icons/os_logo.svg" width="24" height="24" />
+        </v-btn>
+        <v-btn
+          v-for="icon in icons"
+          :key="icon.icon"
+          :href="icon.href"
+          target="_blank"
+          class="mx-1"
+          dark
+          icon
+        >
           <v-icon size="24px">
-            {{ icon }}
+            {{ icon.icon }}
           </v-icon>
         </v-btn>
       </v-card-title>
@@ -30,7 +41,10 @@
 <script>
 export default {
   data: () => ({
-    icons: ["mdi-discord", "mdi-twitter"],
+    icons: [
+      { icon: "mdi-twitter", href: "https://twitter.com/RisingSkullsNFT" },
+      { icon: "mdi-discord", href: "https://discord.gg/9P9465WzWp" },
+    ],
   }),
 };
 </script>

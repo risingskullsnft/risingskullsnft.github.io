@@ -123,7 +123,7 @@
 
 <script>
 import Web3ModalVue from "web3modal-vue";
-// import WalletConnectProvider from "@walletconnect/web3-provider";
+import WalletConnectProvider from "@walletconnect/web3-provider";
 import { web3Modal } from "./mixins";
 
 import Rarity from "./components/sections/Rarity.vue";
@@ -153,23 +153,37 @@ export default {
         { icon: "mdi-discord", href: "https://discord.gg/9P9465WzWp" },
       ],
       providerOptions: {
-        // walletconnect: {
-        //   package: WalletConnectProvider,
-        //   options: {
-        //     infuraId: "-"
-        //   }
-        // }
+        walletconnect: {
+          package: WalletConnectProvider,
+          options: {
+            rpc: {
+              137: "https://polygon-rpc.com",
+            },
+          },
+        },
       },
     };
   },
+  created() {},
   mounted() {
+    this.unsubscribe = this.$store.subscribe((mutation, state) => {
+      if (mutation.type === "setActive") {
+        console.log(`Updating to ${state.web3Modal.active}`);
+
+        // Do whatever makes sense now
+        if (state.web3Modal.active === true) {
+          console.log(`Activating Account: ${state.web3Modal.account}`);
+          this.fetchRewards(state.web3Modal.account);
+          this.fetchRumBalance(state.web3Modal.account);
+        }
+      }
+    });
+
     this.$nextTick(async () => {
       const web3modal = this.$refs.web3modal;
       this.$store.commit("setWeb3Modal", web3modal);
       if (web3modal.cachedProvider) {
         await this.$store.dispatch("connect");
-        this.fetchRewards();
-        this.fetchRumBalance();
       }
     });
   },
@@ -177,11 +191,11 @@ export default {
     ...mapGetters(["rumBalance", "rewardsBalance"]),
   },
   methods: {
-    fetchRewards() {
-      this.$store.dispatch("fetchRewardsAmount");
+    fetchRewards(account) {
+      this.$store.dispatch("fetchRewardsAmount", account);
     },
-    fetchRumBalance() {
-      this.$store.dispatch("fetchRumBalance");
+    fetchRumBalance(account) {
+      this.$store.dispatch("fetchRumBalance", account);
     },
     claimRewards() {
       this.$store.dispatch("claimRewards");
