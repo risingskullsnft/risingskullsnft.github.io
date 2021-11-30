@@ -83,14 +83,14 @@ const risingSkullsStore = {
       console.log(`Retrieved Rank: ${rank}`);
       commit("setRarityRank", parseInt(rank));
     },
-    async claimRewards({ dispatch }) {
+    async claimRewards({ dispatch, rootState }) {
       try {
         const tx = await getRisingSkullsNFTContract()["getReward"]();
-        const res = tx.wait();
+        const res = await tx.wait();
 
         console.log(res);
-        dispatch("fetchRumBalance");
-        dispatch("fetchRewardsAmount");
+        dispatch("fetchRumBalance", rootState.web3Modal.account);
+        dispatch("fetchRewardsAmount", rootState.web3Modal.account);
       } catch (err) {
         console.error(err);
       }
